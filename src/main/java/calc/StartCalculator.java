@@ -1,13 +1,15 @@
 package calc;
 
-import static calc.Initializer.initCalc;
 
 public class StartCalculator {
 
     public static void main(String[] args) throws Exception {
 
+        Initializer initializer = new Initializer();
+
         while (true) {
-            System.out.println(initCalc());
+            System.out.println("Введите данные для расчета");
+            System.out.println(initializer.initCalc());
         }
     }
 

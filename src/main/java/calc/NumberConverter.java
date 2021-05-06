@@ -34,7 +34,7 @@ public class NumberConverter {
         try {
             result = Integer.parseInt(number);
         } catch (Exception e) {
-            result = romanToArabic(number);
+            result = romanToArabicNumber(number);
         }
 
         if (result < 1 || result > 10) {
@@ -47,7 +47,7 @@ public class NumberConverter {
     /**
      * Метод для конвертации Римской в Арабскую цифру
      */
-    public int romanToArabic(String number) throws Exception {
+    public int romanToArabicNumber(String number) throws Exception {
         int result = 0;
         int count = 0;
         int i = 0;
@@ -55,15 +55,13 @@ public class NumberConverter {
         while (i < number.length()) {
             char symbol = number.charAt(i);
             if (String.valueOf(symbol).equals("I")) count++;
-            int num = romanToArabic(symbol);
-
-            if (num < 0) throw new Exception("Введены не верные данные");
+            int num = romanToArabicSymbol(symbol);
 
             i++;
             if (i == number.length()) {
                 result += num;
             } else {
-                int secondNum = romanToArabic(number.charAt(i));
+                int secondNum = romanToArabicSymbol(number.charAt(i));
                 if (secondNum > num) {
                     result += (secondNum - num);
                     i++;
@@ -78,7 +76,7 @@ public class NumberConverter {
     /**
      * Метод для конвертации Римских цифр в Арабские по символьно
      */
-    public int romanToArabic(char symbol) {
+    public int romanToArabicSymbol(char symbol) {
         int result = -1;
 
         for (Map.Entry<Integer, String> roman : romanNumbers.entrySet()) {
